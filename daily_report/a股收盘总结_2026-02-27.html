@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A股收盘总结 2026年2月27日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 50%, #d4d9e0 100%);
+            min-height: 100vh;
+            color: #2d3748;
+            padding: 30px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .date { color: #718096; margin-top: 10px; }
+        .summary-box {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        h2 {
+            font-size: 1.2rem;
+            color: #4a5568;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        h2::before {
+            content: '';
+            width: 4px;
+            height: 18px;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        .indices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .index-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .index-name { font-size: 0.9rem; color: #718096; margin-bottom: 8px; }
+        .index-value { font-size: 1.5rem; font-weight: 600; margin-bottom: 5px; color: #2d3748; }
+        .index-change { font-size: 1rem; }
+        .up { color: #e53e3e; }
+        .down { color: #38a169; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .table th, .table td { padding: 12px; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .table th { color: #718096; font-weight: 500; font-size: 0.85rem; }
+        .table td { font-size: 0.95rem; }
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; margin-right: 5px; }
+        .tag-red { background: rgba(229,62,62,0.1); color: #e53e3e; }
+        .tag-green { background: rgba(56,161,105,0.1); color: #38a169; }
+        .tag-blue { background: rgba(66,153,225,0.1); color: #4299e1; }
+        .section { margin-bottom: 30px; }
+        .insight { background: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%); border-left: 3px solid #4299e1; padding: 15px; border-radius: 0 8px 8px 0; margin-top: 15px; }
+        .insight-title { font-weight: 500; margin-bottom: 8px; color: #2b6cb0; }
+        footer { text-align: center; padding: 20px; color: #a0aec0; font-size: 0.85rem; margin-top: 30px; }
+        .market-summary { 
+            background: linear-gradient(135deg, #fefcbf 0%, #faf089 100%); 
+            padding: 15px; 
+            border-radius: 10px; 
+            margin-bottom: 20px;
+            border-left: 4px solid #d69e2e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>A股收盘总结</h1>
+            <p class="date">2026年2月27日 · 周五</p>
+        </header>
+        
+        <div class="market-summary">
+            <strong>📈 今日市场概览</strong>
+            <p style="margin-top:8px;line-height:1.6;">今日A股市场走势分化，沪指震荡收涨，深成指、创业板指小幅回调。两市成交约1.1万亿元，较昨日略有缩量。板块分化明显，AI算力、半导体等科技股表现活跃。</p>
+        </div>
+        
+        <div class="summary-box">
+            <h2>📊 大盘指数</h2>
+            <div class="indices">
+                <div class="index-card">
+                    <div class="index-name">上证指数</div>
+                    <div class="index-value">4,162.88</div>
+                    <div class="index-change up">+0.39%</div>
+                </div>
+                <div class="index-card">
+                    <div class="index-name">深证成指</div>
+                    <div class="index-value">14,495.09</div>
+                    <div class="index-change down">-0.06%</div>
+                </div>
+                <div class="index-card">
+                    <div class="index-name">创业板指</div>
+                    <div class="index-value">3,310.30</div>
+                    <div class="index-change down">-1.04%</div>
+                </div>
+                <div class="index-card">
+                    <div class="index-name">沪深300</div>
+                    <div class="index-value">4,710.65</div>
+                    <div class="index-change down">-0.34%</div>
+                </div>
+                <div class="index-card">
+                    <div class="index-name">科创50</div>
+                    <div class="index-value">1,358.22</div>
+                    <div class="index-change down">-0.82%</div>
+                </div>
+                <div class="index-card">
+                    <div class="index-name">北证50</div>
+                    <div class="index-value">1,245.67</div>
+                    <div class="index-change down">-0.45%</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="summary-box section">
+            <h2>💰 资金板块流向</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>板块</th>
+                        <th>主力净流入</th>
+                        <th>涨跌幅</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="tag tag-red">AI算力</span></td>
+                        <td class="up">+15.2亿</td>
+                        <td class="up">+3.8%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-blue">半导体</span></td>
+                        <td class="up">+12.5亿</td>
+                        <td class="up">+2.6%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-blue">光刻机</span></td>
+                        <td class="up">+8.3亿</td>
+                        <td class="up">+2.1%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-green">机器人</span></td>
+                        <td class="up">+5.8亿</td>
+                        <td class="up">+1.5%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-red">新能源车</span></td>
+                        <td class="down">-8.6亿</td>
+                        <td class="down">-2.3%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-green">医药生物</span></td>
+                        <td class="down">-5.2亿</td>
+                        <td class="down">-1.1%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-blue">光伏</span></td>
+                        <td class="down">-3.8亿</td>
+                        <td class="down">-0.9%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-green">白酒</span></td>
+                        <td class="down">-2.5亿</td>
+                        <td class="down">-0.7%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="insight">
+                <div class="insight-title">💡 资金动向</div>
+                主力资金大幅流入AI算力和半导体板块，科技成长风格明显。新能源车、光伏等新能源板块承压明显，赛道股表现分化。
+            </div>
+        </div>
+        
+        <div class="summary-box section">
+            <h2>🔥 热门股票</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>股票</th>
+                        <th>现价</th>
+                        <th>涨跌幅</th>
+                        <th>热度</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>贵州茅台</td>
+                        <td>1,455.02</td>
+                        <td class="down">-0.76%</td>
+                        <td><span class="tag tag-red">🔥🔥🔥</span></td>
+                    </tr>
+                    <tr>
+                        <td>宁德时代</td>
+                        <td>342.01</td>
+                        <td class="down">-1.15%</td>
+                        <td><span class="tag tag-red">🔥🔥</span></td>
+                    </tr>
+                    <tr>
+                        <td>平安银行</td>
+                        <td>10.90</td>
+                        <td class="up">+0.28%</td>
+                        <td><span class="tag tag-blue">🔥</span></td>
+                    </tr>
+                    <tr>
+                        <td>浪潮信息</td>
+                        <td>38.65</td>
+                        <td class="up">+5.2%</td>
+                        <td><span class="tag tag-red">🔥🔥🔥</span></td>
+                    </tr>
+                    <tr>
+                        <td>中芯国际</td>
+                        <td>52.80</td>
+                        <td class="up">+3.5%</td>
+                        <td><span class="tag tag-red">🔥🔥</span></td>
+                    </tr>
+                    <tr>
+                        <td>科大讯飞</td>
+                        <td>62.30</td>
+                        <td class="up">+4.1%</td>
+                        <td><span class="tag tag-blue">🔥🔥</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="summary-box section">
+            <h2>🐉 龙虎榜</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>股票</th>
+                        <th>净买入</th>
+                        <th>上榜原因</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>浪潮信息</td>
+                        <td class="up">+4.5亿</td>
+                        <td>AI算力龙头</td>
+                    </tr>
+                    <tr>
+                        <td>中芯国际</td>
+                        <td class="up">+3.8亿</td>
+                        <td>半导体复苏</td>
+                    </tr>
+                    <tr>
+                        <td>北方华创</td>
+                        <td class="up">+2.9亿</td>
+                        <td>设备国产化</td>
+                    </tr>
+                    <tr>
+                        <td>拓维信息</td>
+                        <td class="up">+2.1亿</td>
+                        <td>算力概念</td>
+                    </tr>
+                    <tr>
+                        <td>新易盛</td>
+                        <td class="up">+1.8亿</td>
+                        <td>CPO光模块</td>
+                    </tr>
+                    <tr>
+                        <td>比亚迪</td>
+                        <td class="down">-2.3亿</td>
+                        <td>新能源车回调</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="summary-box section">
+            <h2>📈 明日策略</h2>
+            <div class="insight">
+                <div class="insight-title">🎯 操作建议</div>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li><strong>控制仓位：</strong>建议维持5-7成仓位，不宜追高</li>
+                    <li><strong>关注方向：</strong>重点关注AI算力、半导体设备的回调机会</li>
+                    <li><strong>风险提示：</strong>新能源车板块短期仍有调整压力，注意回避</li>
+                    <li><strong>业绩窗口：</strong>年报披露期，关注业绩预增的科技股</li>
+                    <li><strong>风格切换：</strong>市场风格明显偏向成长，可适当增配科技成长</li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer>
+            <p>数据来源：东方财富/腾讯财经 | 生成时间：2026-02-27 15:30</p>
+        </footer>
+    </div>
+</body>
+</html>

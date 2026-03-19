@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A股收盘总结 2026-03-13</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            color: white;
+            padding: 30px 20px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .header .date {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .card-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+        .card-title::before {
+            content: "📊";
+            margin-right: 10px;
+        }
+        .index-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .index-item {
+            background: linear-gradient(145deg, #f8f9fa, #fff);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #eee;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .index-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        .index-name {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        .index-value {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 6px;
+        }
+        .index-change {
+            font-size: 1.1em;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .up {
+            color: #e74c3c;
+            background: #fdeeee;
+        }
+        .down {
+            color: #27ae60;
+            background: #eafaf1;
+        }
+        .summary-text {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+        .flow-list {
+            display: grid;
+            gap: 12px;
+        }
+        .flow-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 18px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid;
+        }
+        .flow-item.in {
+            border-left-color: #e74c3c;
+        }
+        .flow-item.out {
+            border-left-color: #27ae60;
+        }
+        .flow-name {
+            font-weight: 500;
+            color: #333;
+        }
+        .flow-value {
+            font-weight: 600;
+        }
+        .stock-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .stock-table th {
+            text-align: left;
+            padding: 12px;
+            color: #666;
+            font-weight: 500;
+            border-bottom: 2px solid #eee;
+        }
+        .stock-table td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .stock-table tr:hover {
+            background: #fafafa;
+        }
+        .stock-name {
+            font-weight: 500;
+            color: #333;
+        }
+        .stock-code {
+            color: #999;
+            font-size: 0.85em;
+        }
+        .strategy-box {
+            background: linear-gradient(145deg, #fffbf0, #fff);
+            border: 1px solid #ffe0b2;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .strategy-item {
+            display: flex;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+        .strategy-item:last-child {
+            margin-bottom: 0;
+        }
+        .strategy-icon {
+            font-size: 1.2em;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        .strategy-text {
+            color: #555;
+            line-height: 1.6;
+        }
+        .footer {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            padding: 20px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📈 A股收盘总结</h1>
+            <div class="date">2026年3月13日 星期五</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">大盘指数</div>
+            <div class="index-grid">
+                <div class="index-item">
+                    <div class="index-name">上证指数</div>
+                    <div class="index-value">4095.45</div>
+                    <div class="index-change down">▼ -0.81%</div>
+                </div>
+                <div class="index-item">
+                    <div class="index-name">深证成指</div>
+                    <div class="index-value">14280.78</div>
+                    <div class="index-change down">▼ -0.65%</div>
+                </div>
+                <div class="index-item">
+                    <div class="index-name">创业板指</div>
+                    <div class="index-value">3310.28</div>
+                    <div class="index-change down">▼ -0.22%</div>
+                </div>
+                <div class="index-item">
+                    <div class="index-name">沪深300</div>
+                    <div class="index-value">4669.14</div>
+                    <div class="index-change down">▼ -0.39%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">市场总结</div>
+            <p class="summary-text">
+                今日两市低开低走，三大指数集体收跌。上证指数下跌0.81%失守4100点，深证成指下跌0.65%，创业板指相对抗跌仅跌0.22%。沪深300下跌0.39%。两市成交额约1.79万亿，较昨日小幅放量。盘面上，权重股集体回调，题材股表现分化，市场情绪趋于谨慎。
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">板块资金流向</div>
+            <div class="flow-list">
+                <div class="flow-item out">
+                    <span class="flow-name">💰 主力净流入</span>
+                    <span class="flow-value" style="color: #27ae60;">美容护理</span>
+                </div>
+                <div class="flow-item out">
+                    <span class="flow-name">💰 主力净流入</span>
+                    <span class="flow-value" style="color: #27ae60;">食品饮料</span>
+                </div>
+                <div class="flow-item out">
+                    <span class="flow-name">📉 主力净流出</span>
+                    <span class="flow-value" style="color: #e74c3c;">电子元件</span>
+                </div>
+                <div class="flow-item out">
+                    <span class="flow-name">📉 主力净流出</span>
+                    <span class="flow-value" style="color: #e74c3c;">软件开发</span>
+                </div>
+                <div class="flow-item out">
+                    <span class="flow-name">📉 主力净流出</span>
+                    <span class="flow-value" style="color: #e74c3c;">汽车整车</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">热门板块</div>
+            <div class="flow-list">
+                <div class="flow-item in">
+                    <span class="flow-name">🔥 涨幅板块</span>
+                    <span class="flow-value" style="color: #e74c3c;">AI语料、社区团购预制菜</span>
+                </div>
+                <div class="flow-item out">
+                    <span class="flow-name">📉 跌幅板块</span>
+                    <span class="flow-value" style="color: #27ae60;">小金属、人形机器人peek</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">明日策略建议</div>
+            <div class="strategy-box">
+                <div class="strategy-item">
+                    <span class="strategy-icon">⚡</span>
+                    <span class="strategy-text"><strong>控制仓位：</strong>市场短期有调整压力，建议将仓位控制在5-6成左右，避免追高操作。</span>
+                </div>
+                <div class="strategy-item">
+                    <span class="strategy-icon">🎯</span>
+                    <span class="strategy-text"><strong>关注业绩：</strong>年报披露期临近，重点关注业绩预增且估值合理的优质标的。</span>
+                </div>
+                <div class="strategy-item">
+                    <span class="strategy-icon">🔍</span>
+                    <span class="strategy-text"><strong>逆势布局：</strong>对于调整到位的消费类龙头可适当关注，但需等待企稳信号。</span>
+                </div>
+                <div class="strategy-item">
+                    <span class="strategy-icon">🛡️</span>
+                    <span class="strategy-text"><strong>风险提示：</strong>避免参与纯题材炒作，关注基本面支撑，谨防高位股补跌风险。</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>数据来源：东方财富 | 生成时间：2026-03-13 15:30</p>
+        </div>
+    </div>
+</body>
+</html>

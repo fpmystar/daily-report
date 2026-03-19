@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日工作日报 - 2026年3月11日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #e4e4e7;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .header .date {
+            font-size: 1.2em;
+            color: #a1a1aa;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .section h2 {
+            font-size: 1.4em;
+            color: #c084fc;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section h2 .icon {
+            font-size: 1.2em;
+        }
+        
+        .summary-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.15) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .summary-box h3 {
+            color: #34d399;
+            margin-bottom: 10px;
+        }
+        
+        .activity-list {
+            list-style: none;
+        }
+        
+        .activity-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .activity-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-list .time {
+            color: #71717a;
+            font-size: 0.9em;
+            min-width: 70px;
+        }
+        
+        .activity-list .content {
+            flex: 1;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            margin-right: 5px;
+        }
+        
+        .tag.success {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+        
+        .tag.info {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+        
+        .tag.warning {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+        
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .stat-card .value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #818cf8;
+        }
+        
+        .stat-card .label {
+            color: #71717a;
+            font-size: 0.85em;
+            margin-top: 5px;
+        }
+        
+        .interaction-item {
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border-left: 3px solid #8b5cf6;
+        }
+        
+        .interaction-item .type {
+            font-size: 0.85em;
+            color: #a1a1aa;
+            margin-bottom: 5px;
+        }
+        
+        .output-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        .output-item .icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+        }
+        
+        .output-item .details {
+            flex: 1;
+        }
+        
+        .output-item .title {
+            color: #34d399;
+            font-weight: 500;
+        }
+        
+        .output-item .path {
+            color: #71717a;
+            font-size: 0.85em;
+            margin-top: 3px;
+        }
+        
+        .reflection-item {
+            padding: 15px;
+            background: rgba(245, 158, 11, 0.1);
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border-left: 3px solid #f59e0b;
+        }
+        
+        .reflection-item.improvement {
+            background: rgba(59, 130, 246, 0.1);
+            border-left-color: #3b82f6;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #71717a;
+            font-size: 0.9em;
+        }
+        
+        .footer .emoji {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🐂 每日工作日报</h1>
+            <div class="date">2026年3月11日 · 周三</div>
+        </div>
+        
+        <!-- 今日总结 -->
+        <div class="section">
+            <h2><span class="icon">📋</span> 今日总结</h2>
+            <div class="summary-box">
+                <h3>整体运营状态：正常</h3>
+                <p>今日完成了早间新闻播报、A股收盘总结、财经早餐报告的定时发送，以及Polyclaw机会猎手的持续扫描。全天系统运行稳定，各项cron任务均成功执行。</p>
+            </div>
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="value">5</div>
+                    <div class="label">定时任务执行</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">8+</div>
+                    <div class="label">心跳检查</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">3</div>
+                    <div class="label">报告发送</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">20.40</div>
+                    <div class="label">USDC 余额</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 活动记录 -->
+        <div class="section">
+            <h2><span class="icon">📅</span> 活动记录</h2>
+            <ul class="activity-list">
+                <li>
+                    <span class="time">08:15</span>
+                    <span class="content">
+                        <span class="tag success">自动</span>
+                        每日早间新闻播报 - 获取50条热点新闻并发送至飞书
+                    </span>
+                </li>
+                <li>
+                    <span class="time">15:30</span>
+                    <span class="content">
+                        <span class="tag success">自动</span>
+                        A股收盘总结 - 生成HTML报告并发送至飞书
+                        <br><small style="color:#71717a">上证指数 +0.25%, 创业板指 +1.31%, AI概念持续活跃</small>
+                    </span>
+                </li>
+                <li>
+                    <span class="time">22:00</span>
+                    <span class="content">
+                        <span class="tag success">自动</span>
+                        每日财经早餐报告 - 生成包含全球市场、趋势分析、自选股技术分析的报告
+                    </span>
+                </li>
+                <li>
+                    <span class="time">全天</span>
+                    <span class="content">
+                        <span class="tag info">持续</span>
+                        机会猎手扫描 - 每30分钟执行一次Polyclaw交易扫描
+                        <br><small style="color:#71717a">全 天无交易机会，余额保持20.40 USDC</small>
+                    </span>
+                </li>
+                <li>
+                    <span class="time">全天</span>
+                    <span class="content">
+                        <span class="tag info">后台</span>
+                        心跳检查 - 定期检查日历和邮箱（夜间保持安静）
+                    </span>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- 交互记录 -->
+        <div class="section">
+            <h2><span class="icon">💬</span> 与用户交互</h2>
+            <div class="interaction-item">
+                <div class="type">定时任务通知 · 机会猎手扫描</div>
+                <div>多次扫描报告（无新交易机会）- 保持静默未打扰</div>
+            </div>
+            <div class="interaction-item">
+                <div class="type">定时任务通知 · 财经早餐报告</div>
+                <div>报告已发送，包含全球市场、趋势分析、自选股技术分析</div>
+            </div>
+            <div class="interaction-item">
+                <div class="type">定时任务通知 · A股收盘总结</div>
+                <div>三大指数上涨，AI概念持续活跃，发送完整报告至飞书</div>
+            </div>
+            <div class="interaction-item">
+                <div class="type">心跳检查</div>
+                <div>定期检查日历和邮箱，无紧急事项</div>
+            </div>
+        </div>
+        
+        <!-- 产出结果 -->
+        <div class="section">
+            <h2><span class="icon">📦</span> 产出结果</h2>
+            <div class="output-item">
+                <span class="icon">📊</span>
+                <div class="details">
+                    <div class="title">A股收盘总结 HTML报告</div>
+                    <div class="path">/Users/michael_macmini/.openclaw/workspace/daily_report/a股收盘总结_2026-03-11.html</div>
+                </div>
+            </div>
+            <div class="output-item">
+                <span class="icon">📰</span>
+                <div class="details">
+                    <div class="title">财经早餐报告</div>
+                    <div class="path">/Users/michael_macmini/Desktop/finance_report_daily.html</div>
+                </div>
+            </div>
+            <div class="output-item">
+                <span class="icon">🔍</span>
+                <div class="details">
+                    <div class="title">Polyclaw 交易扫描记录</div>
+                    <div class="path">余额: 20.40 USDC · 持仓: 0 · 交易数: 0</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 反思与改进 -->
+        <div class="section">
+            <h2><span class="icon">🔍</span> 反思与改进</h2>
+            <div class="reflection-item">
+                <strong>观察：</strong> 全天多次机会猎手扫描均无交易机会，余额保持20.40 USDC未变。可能原因：当前市场条件未触发策略信号，或信心度设置（60%）较为保守。
+            </div>
+            <div class="reflection-item">
+                <strong>改进点：</strong> 可以考虑：
+                <ul style="margin-top:10px; margin-left:20px;">
+                    <li>定期回顾信心度设置，根据市场环境适度调整</li>
+                    <li>分析历史扫描数据，了解哪些条件更容易触发交易</li>
+                    <li>考虑增加更多市场/领域覆盖，提高机会发现概率</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- 明日计划 -->
+        <div class="section">
+            <h2><span class="icon">🚀</span> 明日计划</h2>
+            <ul class="activity-list">
+                <li>
+                    <span class="time">08:15</span>
+                    <span class="content">每日早间新闻播报 - 继续获取热点新闻并发送</span>
+                </li>
+                <li>
+                    <span class="time">15:30</span>
+                    <span class="content">A股收盘总结（如交易日）</span>
+                </li>
+                <li>
+                    <span class="time">22:00</span>
+                    <span class="content">每日财经早餐报告</span>
+                </li>
+                <li>
+                    <span class="time">全天<span class="content">机会猎手</span>
+                    持续扫描（每30分钟）</span>
+                </li>
+                <li>
+                    <span class="time">23:00</span>
+                    <span class="content">每日总结报告生成</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <div class="emoji">🐂</div>
+            <div>由 牛牛 AI 助手 生成</div>
+            <div style="margin-top:5px;">2026-03-11 23:00</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A股收盘总结 2026-03-12</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header .date {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .index-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        
+        .index-item {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            border: 1px solid #e8eaff;
+        }
+        
+        .index-item.up {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+            border-color: #ffcccc;
+        }
+        
+        .index-item.down {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2ff 100%);
+            border-color: #cce5ff;
+        }
+        
+        .index-name {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .index-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 4px;
+        }
+        
+        .index-change {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .index-change.up {
+            color: #e74c3c;
+        }
+        
+        .index-change.down {
+            color: #27ae60;
+        }
+        
+        .section-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .section-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .sector-list {
+            list-style: none;
+        }
+        
+        .sector-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .sector-item:last-child {
+            border-bottom: none;
+        }
+        
+        .sector-name {
+            color: #333;
+            font-size: 14px;
+        }
+        
+        .sector-change {
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 13px;
+        }
+        
+        .sector-change.up {
+            background: #ffe8e8;
+            color: #e74c3c;
+        }
+        
+        .sector-change.down {
+            background: #e8f5e9;
+            color: #27ae60;
+        }
+        
+        .stock-list {
+            list-style: none;
+        }
+        
+        .stock-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .stock-item:last-child {
+            border-bottom: none;
+        }
+        
+        .stock-name {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .stock-code {
+            font-size: 12px;
+            color: #999;
+            margin-left: 8px;
+        }
+        
+        .stock-price {
+            text-align: right;
+        }
+        
+        .stock-value {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .strategy-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff3cc 100%);
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .strategy-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        
+        .strategy-content {
+            color: #555;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+        
+        .summary-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #4caf50;
+            margin-bottom: 20px;
+        }
+        
+        .summary-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        
+        .summary-content {
+            color: #555;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            padding: 20px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 A股收盘总结</h1>
+            <div class="date">2026年3月12日 星期四</div>
+        </div>
+        
+        <!-- 大盘综述 -->
+        <div class="summary-box">
+            <div class="summary-title">📈 大盘综述</div>
+            <div class="summary-content">
+                今日三大指数集体收跌，创业板指跌幅最大达0.96%。市场成交额约1.07万亿，整体呈现震荡调整态势。煤炭、储能等板块表现强势，而科技股普遍回调。盘面上，个股涨少跌多，赚钱效应较弱。
+            </div>
+        </div>
+        
+        <!-- 大盘指数 -->
+        <div class="card">
+            <div class="card-title">🏛️ 大盘指数</div>
+            <div class="index-grid">
+                <div class="index-item down">
+                    <div class="index-name">上证指数</div>
+                    <div class="index-value">4129.10</div>
+                    <div class="index-change down">-0.10%</div>
+                </div>
+                <div class="index-item down">
+                    <div class="index-name">深证成指</div>
+                    <div class="index-value">14374.87</div>
+                    <div class="index-change down">-0.63%</div>
+                </div>
+                <div class="index-item down">
+                    <div class="index-name">创业板指</div>
+                    <div class="index-value">3317.52</div>
+                    <div class="index-change down">-0.96%</div>
+                </div>
+                <div class="index-item down">
+                    <div class="index-name">沪深300</div>
+                    <div class="index-value">4687.56</div>
+                    <div class="index-change down">-0.37%</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-row">
+            <!-- 行业资金流向 -->
+            <div class="card">
+                <div class="card-title">💰 行业资金流向（涨幅前10）</div>
+                <ul class="sector-list">
+                    <li class="sector-item">
+                        <span class="sector-name">储能</span>
+                        <span class="sector-change up">+7.44%</span>
+                    </li>
+                    <li class="sector-item">
+                        <span class="sector-name">其他化学纤维</span>
+                        <span class="sector-change up">+6.82%</span>
+                    </li>
+                    <li class="sector-item">
+                        <span class="sector-name">风电整机</span>
+                        <span class="sector-change up">+5.62%</span>
+                    </li>
+                    <li class="sector-item">
+                        <span class="sector-name">煤化工</span>
+                        <span class="sector-change up">+4.70%</span>
+                    </li>
+                    <li class="sector-item">
+                        <span class="sector-name">焦炭Ⅲ</span>
+                        <span class="sector-change up">+4.34%</span>
+                    </li>
+                    <li class="sector-item">
+                        <span class="sector-name">风电设备</span>
+                        <span class="sector-change up">+4.32%</span>
+                    </li>
+                    <li class="sector-item">
+                        <span class="sector-name">期货</span>
+                        <span class="sector-change up">+4.18%</span>
+                    </li>
+                    <li class="sector-item">
+                        <span class="sector-name">动力煤</span>
+                        <span class="sector-change up">+4.10%</span>
+                    </li>
+                    <li class="sector-item">
+                        <span class="sector-name">煤炭</span>
+                        <span class="sector-change up">+4.09%</span>
+                    </li>
+                    <li class="sector-item">
+                        <span class="sector-name">逆变器</span>
+                        <span class="sector-change up">+4.07%</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- 热门板块 -->
+            <div class="card">
+                <div class="card-title">🔥 热门板块</div>
+                <ul class="sector-list">
+                    <li class="sector-item">
+                        <span class="sector-name">储能板块</span>
+                        <span class="sector-change up">+7.44%</span>
+                    </li>
+                    <li class="sector-item">
+                        <span class="sector-name">风电板块</span>
+                        <span class="sector-change up">+4.50%</span>
+                    </li>
+                    <li class="sector-item">
+                        <span class="sector-name">煤炭板块</span>
+                        <span class="sector-change up">+4.09%</span>
+                    </li>
+                    <li class="sector-item">
+                        <span class="sector-name">化工板块</span>
+                        <span class="sector-change up">+3.50%</span>
+                    </li>
+                    <li class="sector-item">
+                        <span class="sector-name">电力板块</span>
+                        <span class="sector-change up">+2.80%</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- 策略建议 -->
+        <div class="card">
+            <div class="card-title">🎯 明日策略建议</div>
+            <div class="strategy-box">
+                <div class="strategy-title">操作策略</div>
+                <div class="strategy-content">
+                    1. <strong>控制仓位</strong>：建议维持5成左右仓位，不宜过度追涨<br><br>
+                    2. <strong>关注主线</strong>：储能、风电等新能源板块短期表现强势，但注意追高风险<br><br>
+                    3. <strong>价值投资</strong>：煤炭板块估值较低，可适当关注低估值蓝筹股<br><br>
+                    4. <strong>风险提示</strong>：科技股短期承压，注意规避高位题材股<br><br>
+                    5. <strong>明日关注</strong>：关注量能变化，若成交量放大可适度参与热点板块
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>数据来源：东方财富 | 仅供参考，不构成投资建议</p>
+            <p>生成时间：2026-03-12 16:44</p>
+        </div>
+    </div>
+</body>
+</html>

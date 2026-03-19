@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日工作日报 - 2026年3月2日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #e0e0e0;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .header .date {
+            font-size: 1.2em;
+            color: #8b9dc3;
+            margin-bottom: 20px;
+        }
+        
+        .header .summary {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(0, 210, 255, 0.15);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 20px;
+            color: #00d2ff;
+            font-size: 0.95em;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-title .icon {
+            font-size: 1.4em;
+        }
+        
+        .card-title.activities { color: #4facfe; }
+        .card-title.interactions { color: #f093fb; }
+        .card-title.outputs { color: #43e97b; }
+        .card-title.reflection { color: #fa709a; }
+        .card-title.improvements { color: #fee140; }
+        
+        .activities-list {
+            list-style: none;
+        }
+        
+        .activities-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .activities-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-time {
+            font-size: 0.85em;
+            color: #6b7c93;
+            min-width: 60px;
+            padding-top: 2px;
+        }
+        
+        .activity-content {
+            flex: 1;
+        }
+        
+        .activity-content .title {
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: #e8e8e8;
+        }
+        
+        .activity-content .desc {
+            font-size: 0.9em;
+            color: #8b9dc3;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 500;
+        }
+        
+        .status-success { background: rgba(67, 233, 123, 0.2); color: #43e97b; }
+        .status-running { background: rgba(79, 172, 254, 0.2); color: #4facfe; }
+        .status-pending { background: rgba(254, 225, 64, 0.2); color: #fee140; }
+        
+        .interaction-item {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        
+        .interaction-item:last-child {
+            border-bottom: none;
+        }
+        
+        .interaction-time {
+            font-size: 0.8em;
+            color: #6b7c93;
+            margin-bottom: 6px;
+        }
+        
+        .interaction-text {
+            color: #c8d0e0;
+            line-height: 1.6;
+        }
+        
+        .output-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        
+        .output-item {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .output-item .value {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        
+        .output-item .label {
+            font-size: 0.85em;
+            color: #8b9dc3;
+        }
+        
+        .output-item.success .value { color: #43e97b; }
+        .output-item.info .value { color: #4facfe; }
+        .output-item.warning .value { color: #fee140; }
+        
+        .reflection-list {
+            list-style: none;
+        }
+        
+        .reflection-list li {
+            padding: 10px 0;
+            padding-left: 24px;
+            position: relative;
+            color: #c8d0e0;
+            line-height: 1.6;
+        }
+        
+        .reflection-list li::before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+            top: 10px;
+        }
+        
+        .improvement-list {
+            list-style: none;
+        }
+        
+        .improvement-list li {
+            padding: 10px 0;
+            padding-left: 28px;
+            position: relative;
+            color: #c8d0e0;
+            line-height: 1.6;
+        }
+        
+        .improvement-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            color: #fee140;
+            font-weight: bold;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: #6b7c93;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 20px 15px; }
+            .header h1 { font-size: 1.8em; }
+            .card { padding: 20px; }
+            .output-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>每日工作日报</h1>
+            <div class="date">2026年3月2日 · 周一</div>
+            <div class="summary">📊 正常运行中</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title activities">
+                <span class="icon">📋</span>
+                今日活动汇总
+            </div>
+            <ul class="activities-list">
+                <li>
+                    <span class="activity-time">08:15</span>
+                    <div class="activity-content">
+                        <div class="title">早间新闻播报 <span class="status-badge status-success">已完成</span></div>
+                        <div class="desc">每日早间新闻cron job正常执行，50条热点新闻已发送至飞书</div>
+                    </div>
+                </li>
+                <li>
+                    <span class="activity-time">全天</span>
+                    <div class="activity-content">
+                        <div class="title">Polyclaw 机会猎手交易扫描 <span class="status-badge status-running">运行中</span></div>
+                        <div class="desc">每30分钟自动扫描，当前余额 20.40 USDC，持仓 0</div>
+                    </div>
+                </li>
+                <li>
+                    <span class="activity-time">22:00</span>
+                    <div class="activity-content">
+                        <div class="title">每日财经早餐报告 <span class="status-badge status-success">已完成</span></div>
+                        <div class="desc">包含全球市场动态、美伊局势、自选股分析，已发送至飞书</div>
+                    </div>
+                </li>
+                <li>
+                    <span class="activity-time">全天</span>
+                    <div class="activity-content">
+                        <div class="title">心跳监控 <span class="status-badge status-running">运行中</span></div>
+                        <div class="desc">定时检查任务状态，响应心跳 poll</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <div class="card-title interactions">
+                <span class="icon">💬</span>
+                与用户互动
+            </div>
+            <div class="interaction-item">
+                <div class="interaction-time">18:00</div>
+                <div class="interaction-text">扫描报告：18:00 扫描无新交易机会，回复用户「持仓0，继续监控中 📊」</div>
+            </div>
+            <div class="interaction-item">
+                <div class="interaction-time">22:06</div>
+                <div class="interaction-text">财经早餐报告完成后，主动通知用户「今日财经早餐报告已发送到飞书 📊」</div>
+            </div>
+            <div class="interaction-item">
+                <div class="interaction-time">全 天</div>
+                <div class="interaction-text">响应多次 heartbeat poll (6:01PM, 6:34PM, 7:04PM, 7:34PM, 8:04PM, 8:34PM, 9:04PM, 9:34PM, 10:01PM, 10:03PM, 10:34PM)</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title outputs">
+                <span class="icon">📈</span>
+                产出结果
+            </div>
+            <div class="output-grid">
+                <div class="output-item success">
+                    <div class="value">3</div>
+                    <div class="label">定时任务运行</div>
+                </div>
+                <div class="output-item success">
+                    <div class="value">2</div>
+                    <div class="label">报告已发送</div>
+                </div>
+                <div class="output-item info">
+                    <div class="value">~20</div>
+                    <div class="label">次扫描执行</div>
+                </div>
+                <div class="output-item warning">
+                    <div class="value">0</div>
+                    <div class="label">新交易机会</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title reflection">
+                <span class="icon">🤔</span>
+                反思与观察
+            </div>
+            <ul class="reflection-list">
+                <li>机会猎手今日扫描约20次，但未发现符合策略条件的高信心度机会（信心度阈值60%）</li>
+                <li>用户未主动询问时，常规扫描结果未重复通知，避免打扰</li>
+                <li>A股收盘cron曾出现 delivery error，需关注配置</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <div class="card-title improvements">
+                <span class="icon">🚀</span>
+                改进建议
+            </div>
+            <ul class="improvement-list">
+                <li>考虑降低信心度阈值或调整策略类型以获得更多交易机会</li>
+                <li>优化cron delivery配置，确保所有报告都能正常发送</li>
+                <li>可增加交易机会出现时的即时通知机制</li>
+                <li>建议定期回顾MEMORY.md保持上下文连贯性</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>生成时间：2026-03-02 23:00 | 牛牛 AI 助手</p>
+        </div>
+    </div>
+</body>
+</html>

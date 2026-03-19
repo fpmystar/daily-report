@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日总结 - 2026年2月26日</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 50%, #dde3e9 100%);
+            min-height: 100vh;
+            color: #2d3748;
+            padding: 24px 16px;
+        }
+        .container { max-width: 520px; margin: 0 auto; }
+        
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .greeting { 
+            font-size: 28px; 
+            font-weight: 700; 
+            margin-bottom: 6px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .date { color: #718096; font-size: 13px; font-weight: 500; }
+        
+        /* 第一行：4个指标卡片 */
+        .metrics-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .metric-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f7fafc 100%);
+            border-radius: 16px;
+            padding: 16px 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+            border: 1px solid rgba(255,255,255,0.8);
+            transition: transform 0.2s ease;
+        }
+        .metric-card:hover { transform: translateY(-2px); }
+        .metric-icon {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+        .metric-value { font-size: 22px; font-weight: 700; margin-bottom: 3px; }
+        .metric-label { font-size: 10px; color: #718096; font-weight: 500; }
+        .blue { color: #4f8cff; }
+        .green { color: #48bb78; }
+        .orange { color: #ed8936; }
+        .purple { color: #9f7aea; }
+        
+        /* 通用卡片样式 */
+        .section {
+            background: linear-gradient(145deg, #ffffff 0%, #f7fafc 100%);
+            border-radius: 20px;
+            padding: 18px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #2d3748;
+        }
+        .section-icon { font-size: 16px; }
+        
+        /* 第二行：2个大卡片 */
+        .two-col-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #edf2f7;
+        }
+        .activity-item:last-child { border-bottom: none; }
+        .activity-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        .activity-content { flex: 1; }
+        .activity-name { font-size: 13px; font-weight: 600; margin-bottom: 2px; color: #2d3748; }
+        .activity-desc { font-size: 11px; color: #718096; }
+        
+        .improvement-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #edf2f7;
+        }
+        .improvement-item:last-child { border-bottom: none; }
+        .improvement-title { 
+            font-size: 12px; 
+            font-weight: 600; 
+            margin-bottom: 4px; 
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .improvement-desc { font-size: 11px; color: #718096; line-height: 1.5; }
+        
+        /* 第三行 */
+        .output-list {
+            font-size: 12px;
+        }
+        .output-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            gap: 10px;
+        }
+        .output-icon { 
+            font-size: 18px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f6e05e 0%, #ecc94b 100%);
+            border-radius: 10px;
+        }
+        .output-text { flex: 1; font-weight: 500; color: #2d3748; }
+        .output-time { font-size: 10px; color: #a0aec0; }
+        
+        .互动-list { font-size: 12px; }
+        .互动-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            gap: 10px;
+        }
+        .互动-time { 
+            font-size: 10px; 
+            color: #a0aec0; 
+            min-width: 45px;
+            background: #edf2f7;
+            padding: 3px 6px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .互动-text { color: #4a5568; font-weight: 500; }
+        
+        /* 第四行：数据罗列 */
+        .data-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .data-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f7fafc 100%);
+            border-radius: 14px;
+            padding: 14px 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+        .data-icon { font-size: 20px; margin-bottom: 6px; }
+        .data-value { font-size: 18px; font-weight: 700; margin-bottom: 3px; }
+        .data-label { font-size: 10px; color: #718096; }
+        
+        .footer {
+            text-align: center;
+            padding: 24px 0;
+            color: #a0aec0;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="greeting">早安，攀哥 ☀️</div>
+            <div class="date">2026年2月26日 · 周三</div>
+        </header>
+        
+        <!-- 第一行：4个指标卡片 -->
+        <div class="metrics-row">
+            <div class="metric-card">
+                <div class="metric-icon">💬</div>
+                <div class="metric-value blue">17</div>
+                <div class="metric-label">消息交互</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">✅</div>
+                <div class="metric-value green">8</div>
+                <div class="metric-label">任务完成</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">📄</div>
+                <div class="metric-value orange">4</div>
+                <div class="metric-label">生成文件</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">🆕</div>
+                <div class="metric-value purple">2</div>
+                <div class="metric-label">新建技能</div>
+            </div>
+        </div>
+        
+        <!-- 第二行：今日活动概览 + 反思和改进 -->
+        <div class="two-col-row">
+            <div class="section">
+                <div class="section-title">📋 今日活动概览</div>
+                <div class="activity-item">
+                    <div class="activity-dot" style="background: #4f8cff;"></div>
+                    <div class="activity-content">
+                        <div class="activity-name">早间新闻配置更新</div>
+                        <div class="activity-desc">格式调整为50条分类罗列</div>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-dot" style="background: #48bb78;"></div>
+                    <div class="activity-content">
+                        <div class="activity-name">🤖 Polyclaw注册</div>
+                        <div class="activity-desc">机会猎手Agent上线</div>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-dot" style="background: #ed8936;"></div>
+                    <div class="activity-content">
+                        <div class="activity-name">信心度调整</div>
+                        <div class="activity-desc">75%→70%→60%</div>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-dot" style="background: #9f7aea;"></div>
+                    <div class="activity-content">
+                        <div class="activity-name">多策略配置</div>
+                        <div class="activity-desc">加密+体育+宏观+政治</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">💡 反思和改进</div>
+                <div class="improvement-item">
+                    <div class="improvement-title">⚠️ Polyclaw暂无交易</div>
+                    <div class="improvement-desc">信心度60%仍无机会，可考虑增加资金或调整策略</div>
+                </div>
+                <div class="improvement-item">
+                    <div class="improvement-title">📝 沟通效率</div>
+                    <div class="improvement-desc">早间新闻格式应最初确认，减少迭代</div>
+                </div>
+                <div class="improvement-item">
+                    <div class="improvement-title">✨ 做得好的</div>
+                    <div class="improvement-desc">Polyclaw注册流程顺畅，快速响应需求</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 第三行：产出成果 + 互动记录 -->
+        <div class="two-col-row">
+            <div class="section">
+                <div class="section-title">📦 产出成果</div>
+                <div class="output-list">
+                    <div class="output-item">
+                        <div class="output-icon" style="background: linear-gradient(135deg, #f6e05e 0%, #ecc94b 100%);">📰</div>
+                        <span class="output-text">早间新闻50条</span>
+                        <span class="output-time">8:15</span>
+                    </div>
+                    <div class="output-item">
+                        <div class="output-icon" style="background: linear-gradient(135deg, #68d391 0%, #48bb78 100%);">🤖</div>
+                        <span class="output-text">Polyclaw Agent</span>
+                        <span class="output-time">9:31</span>
+                    </div>
+                    <div class="output-item">
+                        <div class="output-icon" style="background: linear-gradient(135deg, #fc8181 0%, #f56565 100%);">📊</div>
+                        <span class="output-text">A股收盘总结</span>
+                        <span class="output-time">22:45</span>
+                    </div>
+                    <div class="output-item">
+                        <div class="output-icon" style="background: linear-gradient(135deg, #b794f4 0%, #9f7aea 100%);">📱</div>
+                        <span class="output-text">日报HTML</span>
+                        <span class="output-time">22:50</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">💬 互动记录</div>
+                <div class="互动-list">
+                    <div class="互动-item">
+                        <span class="互动-time">08:28</span>
+                        <span class="互动-text">早间新闻格式反馈</span>
+                    </div>
+                    <div class="互动-item">
+                        <span class="互动-time">09:05</span>
+                        <span class="互动-text">PDF发送需求</span>
+                    </div>
+                    <div class="互动-item">
+                        <span class="互动-time">09:25</span>
+                        <span class="互动-text">文字版格式确认</span>
+                    </div>
+                    <div class="互动-item">
+                        <span class="互动-time">11:02</span>
+                        <span class="互动-text">Polyclaw配置咨询</span>
+                    </div>
+                    <div class="互动-item">
+                        <span class="互动-time">17:05</span>
+                        <span class="互动-text">市场类别咨询</span>
+                    </div>
+                    <div class="互动-item">
+                        <span class="互动-time">18:19</span>
+                        <span class="互动-text">信心度调整</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 第四行：数据罗列 -->
+        <div class="data-row">
+            <div class="data-card">
+                <div class="data-icon">💰</div>
+                <div class="data-value blue">$20.40</div>
+                <div class="data-label">Polyclaw 余额</div>
+            </div>
+            <div class="data-card">
+                <div class="data-icon">📈</div>
+                <div class="data-value green">0</div>
+                <div class="data-label">交易次数</div>
+            </div>
+            <div class="data-card">
+                <div class="data-icon">📰</div>
+                <div class="data-value orange">46</div>
+                <div class="data-label">早间新闻条数</div>
+            </div>
+            <div class="data-card">
+                <div class="data-icon">⏰</div>
+                <div class="data-value purple">3</div>
+                <div class="data-label">Cron 任务数</div>
+            </div>
+            <div class="data-card">
+                <div class="data-icon">📈</div>
+                <div class="data-value" style="color: #4f8cff;">0</div>
+                <div class="data-label">A股收益</div>
+            </div>
+            <div class="data-card">
+                <div class="data-icon">🆕</div>
+                <div class="data-value" style="color: #ed8936;">2</div>
+                <div class="data-label">新建技能</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div>晚安，攀哥 🌙</div>
+            <div style="margin-top: 6px; color: #cbd5e0; font-size: 11px;">Generated by OpenClaw · 牛牛</div>
+        </div>
+    </div>
+</body>
+</html>
