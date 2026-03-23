@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A股收盘总结 2026年3月23日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 50%, #d4dae3 100%);
+            min-height: 100vh;
+            color: #374151;
+            padding: 30px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .date { color: #6b7280; margin-top: 10px; }
+        .summary-box {
+            background: rgba(255,255,255,0.9);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        h2 {
+            font-size: 1.2rem;
+            color: #4b5563;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        h2::before {
+            content: '';
+            width: 4px;
+            height: 18px;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        .indices { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .index-card {
+            background: linear-gradient(145deg, #ffffff, #f3f4f6);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .index-name { font-size: 0.9rem; color: #6b7280; margin-bottom: 8px; }
+        .index-value { font-size: 1.5rem; font-weight: 600; margin-bottom: 5px; color: #1f2937; }
+        .index-change { font-size: 1rem; }
+        .up { color: #ef4444; }
+        .down { color: #22c55e; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .table th, .table td { padding: 12px; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.06); }
+        .table th { color: #6b7280; font-weight: 500; font-size: 0.85rem; }
+        .table td { font-size: 0.95rem; }
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; margin-right: 5px; }
+        .tag-red { background: rgba(239,68,68,0.1); color: #ef4444; }
+        .tag-green { background: rgba(34,197,94,0.1); color: #22c55e; }
+        .tag-blue { background: rgba(102,126,234,0.1); color: #667eea; }
+        .section { margin-bottom: 30px; }
+        .insight { background: rgba(102,126,234,0.08); border-left: 3px solid #667eea; padding: 15px; border-radius: 0 8px 8px 0; margin-top: 15px; }
+        .insight-title { font-weight: 500; margin-bottom: 8px; color: #667eea; }
+        footer { text-align: center; padding: 20px; color: #9ca3af; font-size: 0.85rem; margin-top: 30px; }
+        .strategy-card {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 15px;
+            border: 1px solid rgba(102,126,234,0.2);
+        }
+        .strategy-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .strategy-item:last-child { margin-bottom: 0; }
+        .strategy-icon { font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>A股收盘总结</h1>
+            <p class="date">2026年3月23日 · 周一</p>
+        </header>
+        
+        <div class="summary-box">
+            <h2>📊 大盘指数</h2>
+            <div class="indices">
+                <div class="index-card">
+                    <div class="index-name">上证指数</div>
+                    <div class="index-value">3,813.28</div>
+                    <div class="index-change down">-0.36%</div>
+                </div>
+                <div class="index-card">
+                    <div class="index-name">深证成指</div>
+                    <div class="index-value">13,345.51</div>
+                    <div class="index-change down">-0.38%</div>
+                </div>
+                <div class="index-card">
+                    <div class="index-name">创业板指</div>
+                    <div class="index-value">3,235.22</div>
+                    <div class="index-change down">-0.36%</div>
+                </div>
+                <div class="index-card">
+                    <div class="index-name">沪深300</div>
+                    <div class="index-value">4,418.00</div>
+                    <div class="index-change down">-0.33%</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="summary-box section">
+            <h2>💰 资金板块流向（主力净流入）</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>板块</th>
+                        <th>主力净流入</th>
+                        <th>行业趋势</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="tag tag-blue">乘用车</span></td>
+                        <td class="up">+15.19亿</td>
+                        <td>政策刺激预期</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-blue">电动乘用车</span></td>
+                        <td class="up">+13.21亿</td>
+                        <td>新能源车复苏</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-red">煤炭开采</span></td>
+                        <td class="up">+12.31亿</td>
+                        <td>能源安全</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-red">煤炭</span></td>
+                        <td class="up">+11.81亿</td>
+                        <td>业绩支撑</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-blue">光伏电池组件</span></td>
+                        <td class="up">+7.84亿</td>
+                        <td>行业拐点</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="summary-box section">
+            <h2>📈 盘面综述</h2>
+            <div class="insight">
+                <div class="insight-title">今日走势</div>
+                <p>三大指数集体小幅回调，全天成交约2.1万亿元。盘面上，煤炭、汽车整车、光伏等周期板块表现强势，AI算力、半导体等科技方向集体调整。资金从高估值成长股轮动至低估值周期股。</p>
+            </div>
+            <div class="insight" style="margin-top:10px;">
+                <div class="insight-title">主力动向</div>
+                <p>主力资金净流入主要集中在顺周期板块：乘用车（+15亿）、煤炭（+12亿）、光伏（+8亿）。显示资金风险偏好下降，防御性配置增强。</p>
+            </div>
+        </div>
+        
+        <div class="summary-box section">
+            <h2>🎯 明日策略建议</h2>
+            <div class="strategy-card">
+                <div class="strategy-item">
+                    <span class="strategy-icon">🔧</span>
+                    <div>
+                        <strong>关注周期补涨</strong><br>
+                        <span style="color:#6b7280;font-size:0.9rem;">煤炭、地产链等低估值周期股或有轮动机会，注意控制仓位</span>
+                    </div>
+                </div>
+                <div class="strategy-item">
+                    <span class="strategy-icon">⚡</span>
+                    <div>
+                        <strong>光伏左侧布局</strong><br>
+                        <span style="color:#6b7280;font-size:0.9rem;">光伏板块获主力持续关注，可逢低布局龙头标的</span>
+                    </div>
+                </div>
+                <div class="strategy-item">
+                    <span class="strategy-icon">🛡️</span>
+                    <div>
+                        <strong>控制仓位防守</strong><br>
+                        <span style="color:#6b7280;font-size:0.9rem;">市场处于震荡格局，建议保持5成仓位，进可攻退可守</span>
+                    </div>
+                </div>
+                <div class="strategy-item">
+                    <span class="strategy-icon">📊</span>
+                    <div>
+                        <strong>关注业绩窗口</strong><br>
+                        <span style="color:#6b7280;font-size:0.9rem;">年报密集披露期，聚焦业绩超预期个股，避开地雷</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>数据来源：东方财富 | 仅供参考，不构成投资建议</p>
+        </footer>
+    </div>
+</body>
+</html>
